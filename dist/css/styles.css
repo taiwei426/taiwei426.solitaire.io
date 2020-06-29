@@ -1,0 +1,335 @@
+
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/****************/
+/****** STYLES **/
+
+body{
+    background-color: whitesmoke;
+    font-family: 'Cabin', sans-serif;
+}
+
+.container{
+    padding: 20px 0;
+    width: 1200px;
+    /* width: 75vw; */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.top_half{
+    display: flex;
+    /* justify-content: space-between; */
+    padding-bottom: 30px;
+}
+.left_container{
+    display: flex;
+}
+.right_container{
+    display: flex;
+    margin-left: auto;
+    /* margin-left: calc((100vw / 7) - 20px); */
+}
+
+.bottom_half{
+    display: flex;
+}
+
+.column{
+    width: 150px;
+    /* width: calc((100vw / 7) - 20px); */
+    margin: 10px;
+}
+
+.bottom_half .column.empty{
+    background-color:gainsboro;
+    border-radius: 8px;
+    height: 150px;
+    height: 170px;
+    margin-top: 0;
+}
+.left_container .column:empty{
+    background-color:gainsboro;
+    border-radius: 8px;
+    height: 150px;
+    height: 170px;
+}
+
+.card{
+    height: 30px;
+    padding: 10px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    margin-top: -10px;
+}
+.card:last-child{
+    border-radius: 12px;
+    height: 150px;
+}
+
+.card.red{
+    color: red;
+}
+
+.card.hide{
+    background-color: lightslategray;
+    box-shadow: 1px 1px 4px 0 darkslategray;
+}
+
+.card.show{
+    background-color: white;
+    box-shadow: 1px 1px 4px 0 lightgray;
+    cursor: pointer;
+}
+
+.card.reset{
+    background-color: gainsboro;
+    cursor: pointer;
+}
+.card.reset::after{
+    content: '';
+    background-image: url('/img/refresh.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.undrawn-pile .card{
+    cursor: pointer;
+}
+
+.top_half .card{
+    margin-top: 0;
+}
+
+/* .spade{}
+.diamond{}
+.club{}
+.heart{} */
+
+svg, img, use{
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    margin-top: -2px;
+}
+
+.new_game_button{
+    /* width: 100px; */
+    /* padding: 10px; */
+    /* box-shadow: 0 0 0 2px darkslategrey; */
+    color: darkslategrey;
+    /* border-radius: 12px; */
+    position: absolute;
+    margin: 30px 0 0 30px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.winner_overlay{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color:rgba(0, 0, 0, 0.8);
+}
+
+.winner_container{
+    font-size: 50px;
+    color: gold;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.winner_container em{
+    font-size: 150px;
+}
+#confetti-canvas{
+    position: absolute;
+    z-index: 10;
+    top: 0;
+}
+.winner{
+    display: inline-block;
+    animation-name: tada;
+    animation-duration: 1s;
+}
+.overlay_play_again{
+    box-shadow: 0 0 0 2px aqua;
+    color: aqua;
+    font-size: 14px;
+    display: inline-block;
+    margin-top: 50px;
+    padding: 20px 30px;
+    /* border-radius: 12px; */
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s;
+    cursor: pointer;
+}
+.overlay_play_again::after{
+    content: '';
+    position: absolute;
+    background-color: aqua;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    transform: translateY(-100%);
+    width: 0;
+    left: 0;
+    right:  0;
+    z-index: -1;
+    transition: all 0.25s;
+}
+.overlay_play_again:hover{
+    color: black;
+}
+.overlay_play_again:hover::after{
+    width: 100%;
+    transform: translateY(0);
+}
+
+.close_overlay{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    z-index: 10;
+    transition: all 0.25s;
+    background-image: url('/img/close.png');
+    background-size: contain;
+    cursor: pointer;
+}
+.close_overlay:hover{
+    transform: rotate(90deg);
+}
+
+@-webkit-keyframes tada {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    10%,
+    20% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+  
+    40%,
+    60%,
+    80% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  @keyframes tada {
+    from {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  
+    10%,
+    20% {
+      -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    30%,
+    50%,
+    70%,
+    90% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+  
+    40%,
+    60%,
+    80% {
+      -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+      transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+  
+    to {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+    }
+  }
+  
+  .tada {
+    -webkit-animation-name: tada;
+    animation-name: tada;
+  }
