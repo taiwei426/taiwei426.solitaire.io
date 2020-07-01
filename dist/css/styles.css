@@ -58,6 +58,10 @@ body{
     font-family: 'Cabin', sans-serif;
 }
 
+.wrapper{
+    min-height: 100vh
+}
+
 .container{
     padding: 20px 0;
     width: 1200px;
@@ -166,14 +170,10 @@ svg, img, use{
 }
 
 .new_game_button{
-    /* width: 100px; */
-    /* padding: 10px; */
-    /* box-shadow: 0 0 0 2px darkslategrey; */
     color: darkslategrey;
-    /* border-radius: 12px; */
     position: absolute;
     margin: 30px 0 0 30px;
-    font-size: 14px;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -333,3 +333,21 @@ svg, img, use{
     -webkit-animation-name: tada;
     animation-name: tada;
   }
+
+.links{
+    position: fixed;
+    bottom: 1rem;
+    right: 14.5rem;
+    font-size: 1rem;
+}
+.links a{
+    color: lightslategray;
+    text-decoration: none;
+    /* transition: ; */
+}
+.links a:first-child{
+    margin-right: 1rem
+}
+.links a:hover{
+    color: darkslategray
+}
