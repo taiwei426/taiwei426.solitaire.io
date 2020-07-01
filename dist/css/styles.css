@@ -337,13 +337,14 @@ svg, img, use{
 .links{
     position: fixed;
     bottom: 1rem;
-    right: 14.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 1rem;
 }
 .links a{
-    color: lightslategray;
+    color: lightgray;
     text-decoration: none;
-    /* transition: ; */
+    transition: all 0.10s linear;
 }
 .links a:first-child{
     margin-right: 1rem
